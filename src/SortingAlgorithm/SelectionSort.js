@@ -21,66 +21,45 @@ export const  selectionSort = (array) => {
     }
     return animations;
 }
-//export default selectionSort;
-/*
-
-export const  bubbleSort = (array) => {
-    const animations =[];
-    let n=array.length;
-    for(let i=1;i<n-1;i++){
-        for(let j=0 ; j< n-i ;j++){
-            const animation={};
-
-            animation.comparison=[j,j+1];
-            
-            if(array[j]>array[j+1]){
-                animation.swap=[j,j+1];
-                
-                let temp=array[j];
-                array[j]=array[j+1];
-                array[j+1]=temp;
-            }
-            animations.push(animation);
-        }
-    }
-    return animations;
-}
 
 
-
-
-
-
-export const BubbleSortDesc = {
-    title: 'Bubble Sort',
-    description: (
-      <p>
-        <a
-          href="https://en.wikipedia.org/wiki/Bubble_sort"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Bubble Sort
-        </a>{' '}
-        is a simple sorting algorithm that repeatedly steps through the
-        list, compares adjacent elements and swaps them if they are in the
-        wrong order.The pass through the list is repeated until the list
-        is sorted. The algorithm, which is a comparison sort, is named for
-        the way smaller or larger elements "bubble" to the top of the
-        list. Although the algorithm is simple, it is too slow and
-        impractical for most problems
-      </p>
-    ),
-    worstCase: (
-      <span>
-        O(n<sup>2</sup>)
-      </span>
-    ),
-    avgCase: (
-      <span>
-        O(n<sup>2</sup>)
-      </span>
-    ),
-    bestCase: <span>O(n)</span>,
-    space: <span>O(1)</span>
-  };*/
+export const SelectionSortDesc = {
+  title: 'Selection Sort',
+  description: (
+    <p>
+      <a
+        href="https://en.wikipedia.org/wiki/Selection_sort"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Selection Sort
+      </a>{' '}
+      is an in-place comparison sorting algorithm that divides the input
+      list into two parts: the sublist of items already sorted, which is
+      built up from left to right at the front (left) of the list, and
+      the sublist of items remaining to be sorted that occupy the rest
+      of the list. Initially, the sorted sublist is empty and the
+      unsorted sublist is the entire input list. The algorithm proceeds
+      by finding the smallest element in the unsorted sublist,
+      exchanging (swapping) it with the leftmost unsorted element
+      (putting it in sorted order), and moving the sublist boundaries
+      one element to the right.
+    </p>
+  ),
+  worstCase: (
+    <span>
+      O(n<sup>2</sup>)
+    </span>
+  ),
+  avgCase: (
+    <span>
+      O(n<sup>2</sup>)
+    </span>
+  ),
+  bestCase: (
+    <span>
+      O(n<sup>2</sup>)
+    </span>
+  ),
+  space: <span>O(1)</span>
+};

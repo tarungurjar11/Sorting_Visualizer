@@ -1,10 +1,15 @@
 import React ,{ Component } from 'react';
-
+import SortInfo from './SortInfo'
 import './SortingVisualizer.css'; 
 import {selectionSort} from '../SortingAlgorithm/SelectionSort.js';
 import {insertionSort} from '../SortingAlgorithm/InsertionSort.js';
 import {bubbleSort} from '../SortingAlgorithm/BubbleSort.js';
 import {mergeSort} from '../SortingAlgorithm/MergeSort.js';
+import { SelectionSortDesc } from '../SortingAlgorithm/SelectionSort.js';
+import { BubbleSortDesc } from '../SortingAlgorithm/BubbleSort.js';
+import { InsertionSortDesc } from '../SortingAlgorithm/InsertionSort.js';
+import { MergeSortDesc } from '../SortingAlgorithm/MergeSort.js';
+import { QuickSortDesc } from '../SortingAlgorithm/quickSort.js';
 
 import {quickSort} from '../SortingAlgorithm/quickSort.js';
 
@@ -13,8 +18,9 @@ class SortingVisualizer extends Component{
     constructor(props) {
         super(props);
         this.state ={
-            time : 20,
+            algorithm:null,
             array: [],
+            time : 20,
         };
     }
     
@@ -44,6 +50,10 @@ class SortingVisualizer extends Component{
          const time = document.getElementById("myTiming").value;
          this.setState({time:time});
     }
+
+    myAlgoDesc(algo) {
+        this.setState({algorithm:algo});
+   }
 
  
     resetArray(total) {
@@ -92,6 +102,12 @@ class SortingVisualizer extends Component{
         console.log(array);
         this.setState({array});
     }
+    selection()
+    {
+        this.setState({algorithm:SelectionSortDesc});
+        setTimeout(() => {
+        this.selectionSort()},5);
+    }
     selectionSort(){
         this.myButtonToggle(true);
         
@@ -101,7 +117,7 @@ class SortingVisualizer extends Component{
         console.log(arrayAreEqual(jsArray,arrayy));
     */
 
-
+        <SortInfo {...SelectionSortDesc}/>
         const animations = selectionSort(this.state.array);
         const newAnimations = [];
         for(const animation of animations){
@@ -187,15 +203,20 @@ class SortingVisualizer extends Component{
            
     }
     
-
+    bubble()
+    {
+        this.setState({algorithm:BubbleSortDesc});
+        setTimeout(() => {
+        this.bubbleSort()},5);
+    }
     
 
 
 
     bubbleSort(){
         this.myButtonToggle(true);
-
         const animations = bubbleSort(this.state.array);
+        
         const newAnimations = [];
         for(const animation of animations){
             newAnimations.push(animation.comparison);
@@ -282,13 +303,17 @@ class SortingVisualizer extends Component{
         
     }
 
-    
+    insertion()
+    {
+        this.setState({algorithm:InsertionSortDesc});
+        setTimeout(() => {
+        this.insertionSort()},5);
+    }
 
     insertionSort(){
         // const jsArray=this.state.array.slice().sort((a,b)=>a-b);
         // const arrayy = insertionSort(this.state.array);
         // console.log(arrayAreEqual(jsArray,arrayy));
-
         this.myButtonToggle(true);
 
         const animations = insertionSort(this.state.array);
@@ -358,11 +383,15 @@ class SortingVisualizer extends Component{
         
     }
     
-
+    merge()
+    {
+        this.setState({algorithm:MergeSortDesc});
+        setTimeout(() => {
+        this.mergeSort()},5);
+    }
     
 
     mergeSort(){
-        
         // const jsArray=this.state.array.slice().sort((a,b)=>a-b);
         // const arrayy = insertionSort(this.state.array);
         // console.log(arrayAreEqual(jsArray,arrayy));
@@ -425,8 +454,16 @@ class SortingVisualizer extends Component{
         }   
         
     }
+
+    quick()
+    {
+        this.setState({algorithm:QuickSortDesc});
+        setTimeout(() => {
+        this.quickSort()},5);
+    }
     
     quickSort(){
+        this.setState({algorithm:QuickSortDesc});
         // const mySound = document.getElementById("sound");
         // const correctButton = document.getElementById("button6");   
         // correctButton.addEventListener("click", function(){ mySound.play(); });  
@@ -562,11 +599,11 @@ class SortingVisualizer extends Component{
            
      &nbsp; &nbsp; <button id="button2" onClick={() => this.myArrayRange()}> Genrate New Array </button>
      
-     &nbsp; &nbsp; <button id="button3" onClick={() => this.mergeSort()}> Merge Sort </button>
-     &nbsp; &nbsp; <button id="button4" onClick={() => this.insertionSort()}> Insertion Sort </button>
-     &nbsp; &nbsp; <button id="button5" onClick={() => this.selectionSort()}> Selection Sort </button>
-     &nbsp; &nbsp; <button id="button6"  onClick={() => this.quickSort()}> Quick Sort </button>
-     &nbsp; &nbsp; <button id="button7" onClick={() => this.bubbleSort()}> Bubble Sort </button>
+     &nbsp; &nbsp; <button id="button3" onClick={() => this.merge()}> Merge Sort </button>
+     &nbsp; &nbsp; <button id="button4" onClick={() => this.insertion()}> Insertion Sort </button>
+     &nbsp; &nbsp; <button id="button5" onClick={() => this.selection()}> Selection Sort </button>
+     &nbsp; &nbsp; <button id="button6"  onClick={() => this.quick()}> Quick Sort </button>
+     &nbsp; &nbsp; <button id="button7" onClick={() => this.bubble()}> Bubble Sort </button>
     
      &nbsp; &nbsp; <button id="button8" onClick={() => this.reverseSortedArray()}> Reverse Sorted Array </button>
      <br></br> &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;Size of Array : &nbsp; &nbsp;&nbsp; &nbsp; Time:
@@ -581,6 +618,8 @@ class SortingVisualizer extends Component{
                 </div>
             ))}
            
+           <SortInfo {...this.state.algorithm} />
+     
             </div>
         );
     }
