@@ -1,0 +1,100 @@
+.array-container{
+    position :relative;
+    bottom: 2px;
+    text-align: center;
+}
+.array-bar{
+    margin: 0 1px;
+    background-color:turquoise;
+    display:inline-block;
+    text-align: center;
+}
+#button2{
+  width:100px;
+  border-radius: 5px;
+  height:50px;
+  font-style: italic;
+  font-size: large;
+  border-color: chartreuse;
+}
+#button2:hover {
+  color: white;
+  background-color:cornflowerblue;
+}
+#button3{
+    width:100px;
+    height:50px;
+    font-style: italic;
+    border-radius: 5px;
+    font-size: large;
+    border-color: chartreuse;
+}
+#button3:hover {
+    color: white;
+    background-color:cornflowerblue;
+  }
+  #button4{
+    width:100px;
+    border-radius: 5px;
+    height:50px;
+    font-style: italic;
+    font-size: large;
+    border-color: chartreuse;
+}
+#button4:hover {
+    color: white;
+    background-color:cornflowerblue;
+  }
+  #button5{
+    width:100px;
+    height:50px;
+    font-style: italic;
+    font-size: large;
+    border-radius: 5px;
+    border-color: chartreuse;
+}
+#button5:hover {
+    color: white;
+    background-color:cornflowerblue;
+  }
+  #button6{
+    width:100px;
+    height:50px;
+    font-style: italic;
+    font-size: large;
+    border-radius: 5px;
+    border-color: chartreuse;
+}
+#button6:hover {
+    color: white;
+    background-color:cornflowerblue;
+  }
+  #button7{
+    width:100px;
+    height:50px;
+    font-style: italic;
+    font-size: large;
+    border-color: chartreuse;
+    border-radius: 5px;
+}
+#button7:hover {
+    color: white;
+    background-color:cornflowerblue;
+  }
+  #button8{
+    width:150px;
+    height:50px;
+    font-style: italic;
+    font-size: large;
+    border-color: chartreuse;
+    border-radius: 5px;
+}
+#button8:hover {
+    color: white;
+    background-color:cornflowerblue;
+  }
+#tarun{
+  height:100px;
+  background-color:gray;
+  text-align: left;
+}
