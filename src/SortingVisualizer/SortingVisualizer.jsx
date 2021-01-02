@@ -18,19 +18,19 @@ class SortingVisualizer extends Component{
     constructor(props) {
         super(props);
         this.state ={
-            algorithm:null,
-            array: [],
-            time : 20,
+            algorithm:null,    //for description purpose
+            array: [],          //for holding array
+            time : 20,          //for speed of algorithm
         };
     }
     
-    componentDidMount(){
+    componentDidMount(){        //when program start this function run automatically
         this.resetArray(45);
     }
 
 
     everyThingChange(total){
-        for(let i=1;i<total-1;i++){
+        for(let i=0;i<total;i++){
         const arrayBars=document.getElementsByClassName('array-bar');
         const barOneStyle=arrayBars[i].style;
         barOneStyle.backgroundColor='turquoise';
@@ -93,14 +93,13 @@ class SortingVisualizer extends Component{
     }
 
     reverseSortedArray(){
-        var x = document.getElementById("myRange").value;
-        
-
-        this.resetArray(x);
-        console.log(this.state.array);
+        //var x = document.getElementById("myRange").value;
         const array=this.state.array.slice().sort((a,b)=>b-a);
-        console.log(array);
-        this.setState({array});
+        
+        //array.reverse();
+        this.setState({
+            algorithm:null,
+            array:array});
     }
     selection()
     {
@@ -110,14 +109,7 @@ class SortingVisualizer extends Component{
     }
     selectionSort(){
         this.myButtonToggle(true);
-        
-    /*
-        const jsArray=this.state.array.slice().sort((a,b)=>a-b);
-        const arrayy = selectionSort.selectionSort(this.state.array);
-        console.log(arrayAreEqual(jsArray,arrayy));
-    */
 
-        <SortInfo {...SelectionSortDesc}/>
         const animations = selectionSort(this.state.array);
         const newAnimations = [];
         for(const animation of animations){
@@ -127,15 +119,15 @@ class SortingVisualizer extends Component{
         }
         this.selectionSortAnimation(newAnimations);
         setTimeout(() => {
-            for(let i=0;i<this.state.array.length;i++){
-                //console.log(i);
-                const arrayBars=document.getElementsByClassName('array-bar');
-                const barOneStyle=arrayBars[i].style;
-                barOneStyle.backgroundColor='turquoise';
-                }
-        this.myButtonToggle(false)
+
+            this.everyThingChange(this.state.array.length);
+            this.myButtonToggle(false);
+
     },(newAnimations.length+1)*this.state.time);
     }
+
+
+
     selectionSortAnimation(newAnimations){
         let  len=this.state.array.length-1;
         let count=len;
@@ -225,14 +217,11 @@ class SortingVisualizer extends Component{
         }
         this.bubbleSortAnimation(newAnimations);
         setTimeout(() => {
-            for(let i=0;i<this.state.array.length;i++){
-                //console.log(i);
-                const arrayBars=document.getElementsByClassName('array-bar');
-                const barOneStyle=arrayBars[i].style;
-                barOneStyle.backgroundColor='turquoise';
-                }
-        this.myButtonToggle(false)
-    },(newAnimations.length+1)*this.state.time);
+            
+            this.everyThingChange(this.state.array.length);
+            this.myButtonToggle(false);
+
+    },(newAnimations.length+2)*this.state.time);
     }
 
 
@@ -269,7 +258,7 @@ class SortingVisualizer extends Component{
                           barTwoStyle.backgroundColor='MediumSeaGreen';
                           len+= --count;
                       }
-                      if(i===newAnimations.length-1){
+                      if(i===newAnimations.length-2){
                         const barOneStyl=arrayBars[barOneIdx+1].style;
                         barOneStyl.backgroundColor='MediumSeaGreen';
                         }
@@ -311,9 +300,11 @@ class SortingVisualizer extends Component{
     }
 
     insertionSort(){
+
         // const jsArray=this.state.array.slice().sort((a,b)=>a-b);
         // const arrayy = insertionSort(this.state.array);
         // console.log(arrayAreEqual(jsArray,arrayy));
+        
         this.myButtonToggle(true);
 
         const animations = insertionSort(this.state.array);
@@ -326,20 +317,15 @@ class SortingVisualizer extends Component{
         }
         this.insertionSortAnimation(newAnimations);
         setTimeout(() => {
-            // for(let i=0;i<this.state.array.length;i++){
-            //     //console.log(i);
-            //     const arrayBars=document.getElementsByClassName('array-bar');
-            //     const barOneStyle=arrayBars[i].style;
-            //     barOneStyle.backgroundColor='turquoise';
-            //     }
-        this.myButtonToggle(false)
+        
+        this.myButtonToggle(false);
+
     },(newAnimations.length+1)*this.state.time);
     }
 
 
     insertionSortAnimation(newAnimations){
-        let  len=this.state.array.length-1;
-        let count=len;
+        
         for(let i=0;i<newAnimations.length;i++){
             
             const arrayBars=document.getElementsByClassName('array-bar');
@@ -408,20 +394,15 @@ class SortingVisualizer extends Component{
         }
         this.mergeSortAnimation(newAnimations);
         setTimeout(() => {
-            // for(let i=0;i<this.state.array.length;i++){
-            //     //console.log(i);
-            //     const arrayBars=document.getElementsByClassName('array-bar');
-            //     const barOneStyle=arrayBars[i].style;
-            //     barOneStyle.backgroundColor='turquoise';
-            //     }
-        this.myButtonToggle(false)
+
+        this.myButtonToggle(false);
+
     },(newAnimations.length+1)*this.state.time);
     }
 
 
     mergeSortAnimation(newAnimations){
-        let  len=this.state.array.length-1;
-        let count=len;
+        
         for(let i=0;i<newAnimations.length;i++){
             
             const arrayBars=document.getElementsByClassName('array-bar');
@@ -441,14 +422,13 @@ class SortingVisualizer extends Component{
                 },i*this.state.time);
             }else{
                 setTimeout(() => {
+                    
                     const [barOneIdx,newHeight]=newAnimations[i];
                     const barOneStyle=arrayBars[barOneIdx].style;
-                        // const temp=barOneStyle.height;
-                         barOneStyle.height=`${newHeight}px`;
-                         //barTwoStyle.height=temp;
+                         
+                    barOneStyle.height=`${newHeight}px`;
+                    barOneStyle.backgroundColor='turquoise';
 
-                      barOneStyle.backgroundColor='turquoise';
-                      //barTwoStyle.backgroundColor='turquoise';
                 },i*this.state.time);
             }
         }   
@@ -464,13 +444,6 @@ class SortingVisualizer extends Component{
     
     quickSort(){
         this.setState({algorithm:QuickSortDesc});
-        // const mySound = document.getElementById("sound");
-        // const correctButton = document.getElementById("button6");   
-        // correctButton.addEventListener("click", function(){ mySound.play(); });  
-
-        // const jsArray=this.state.array.slice().sort((a,b)=>a-b);
-        // const arrayy = quickSort(this.state.array);
-        // console.log(arrayAreEqual(jsArray,arrayy));this.myButtonToggle(true);
 
         this.myButtonToggle(true);
         
@@ -498,8 +471,7 @@ class SortingVisualizer extends Component{
 
 
     quickSortAnimation(newAnimations){
-        let  len=this.state.array.length-1;
-        let count=len;
+        
         for(let i=0;i<newAnimations.length;i++){
             
             const arrayBars=document.getElementsByClassName('array-bar');

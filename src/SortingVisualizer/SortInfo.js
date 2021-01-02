@@ -72,7 +72,7 @@ SortInfo.propTypes = {
   worstCase: PropTypes.object,
   avgCase: PropTypes.object,
   bestCase: PropTypes.object,
-  space: PropTypes.object
+  space: PropTypes.object,
 };
 
 export default SortInfo;

@@ -1,21 +1,21 @@
 
 export const  bubbleSort = (array) => {
-    const animations =[];
+    const animations =[];       //this array holds all copmarisons and swaping.
     let n=array.length;
     for(let i=0;i<n-1;i++){
         for(let j=0 ; j< n-i-1 ;j++){
-            const animation={};
+            const animation={};  //local object 
 
-            animation.comparison=[j,j+1];
+            animation.comparison=[j,j+1];  //push of comparison into animation.
             
             if(array[j]>array[j+1]){
-                animation.swap=[j,j+1];
+                animation.swap=[j,j+1];//push of swap into animation .
                 
                 let temp=array[j];
                 array[j]=array[j+1];
                 array[j+1]=temp;
             }
-            animations.push(animation);
+            animations.push(animation); //push the local object.
         }
     }
     return animations;
